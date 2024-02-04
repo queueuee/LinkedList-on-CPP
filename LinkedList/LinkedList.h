@@ -5,8 +5,13 @@ class LinkedList
 {
 public:
 	LinkedList();
+	~LinkedList();
+
 	void Push_back(T);
 	unsigned int GetSize();
+	void Pop_front();
+	void Push_front(T);
+	void Clear();
 	T& operator[](const int index);
 
 private:

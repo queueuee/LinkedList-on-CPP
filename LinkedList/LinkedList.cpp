@@ -8,6 +8,12 @@ LinkedList<T>::LinkedList()
 }
 
 template<typename T>
+LinkedList<T>::~LinkedList()
+{
+	Clear();
+}
+
+template<typename T>
 void LinkedList<T>::Push_back(T data)
 {
 	if (head == nullptr)
@@ -30,6 +36,31 @@ template<typename T>
 unsigned int LinkedList<T>::GetSize()
 {
 	return size;
+}
+
+template<typename T>
+void LinkedList<T>::Pop_front()
+{
+	Cell<T>* firstCell = head;
+	head = head->nextCell;
+	delete firstCell;
+	size--;
+}
+
+template<typename T>
+void LinkedList<T>::Push_front(T data)
+{
+	head = new Cell<T>(data, head);
+	size++;
+}
+
+template<typename T>
+void LinkedList<T>::Clear()
+{
+	while (size)
+	{
+		Pop_front();
+	}
 }
 
 template<typename T>
