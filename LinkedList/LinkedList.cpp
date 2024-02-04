@@ -31,3 +31,16 @@ unsigned int LinkedList<T>::GetSize()
 {
 	return size;
 }
+
+template<typename T>
+T& LinkedList<T>::operator[](const int index)
+{
+	Cell<T>* currentCell = head;
+
+	for (int counter = 0; counter < index; counter++)
+	{
+		currentCell = currentCell->nextCell;
+	}
+
+	return currentCell->data;
+}

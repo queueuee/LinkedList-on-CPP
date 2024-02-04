@@ -7,6 +7,7 @@ public:
 	LinkedList();
 	void Push_back(T);
 	unsigned int GetSize();
+	T& operator[](const int index);
 
 private:
 	// €чейка списка
