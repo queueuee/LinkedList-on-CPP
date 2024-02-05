@@ -33,7 +33,7 @@ void LinkedList<T>::Push_back(T data)
 }
 
 template<typename T>
-unsigned int LinkedList<T>::GetSize()
+int LinkedList<T>::GetSize()
 {
 	return size;
 }
@@ -52,6 +52,53 @@ void LinkedList<T>::Push_front(T data)
 {
 	head = new Cell<T>(data, head);
 	size++;
+}
+
+template<typename T>
+void LinkedList<T>::Insert(T data, int index)
+{
+	if (index == 0)
+	{
+		Push_front(data);
+		return;
+	}
+
+	Cell<T>* currentCell = head;
+	for (int i = 0; i < index-1; i++)
+	{
+		currentCell = currentCell->nextCell;
+	}
+
+	currentCell->nextCell = new Cell<T>(data, currentCell->nextCell);
+	size++;
+}
+
+template<typename T>
+void LinkedList<T>::RemoveAt(int index)
+{
+	if (index == 0)
+	{
+		Pop_front();
+		return;
+	}
+
+	Cell<T>*prevCell = head;
+	for (int i = 0; i < index - 1; i++)
+	{
+		prevCell = prevCell->nextCell;
+	}
+
+	Cell<T>* toRemove = prevCell->nextCell;
+	prevCell->nextCell = toRemove->nextCell;
+
+	delete toRemove;
+	size--;
+}
+
+template<typename T>
+void LinkedList<T>::Pop_back()
+{
+	RemoveAt(size - 1);
 }
 
 template<typename T>

@@ -8,13 +8,17 @@ public:
 	~LinkedList();
 
 	void Push_back(T);
-	unsigned int GetSize();
+	int GetSize();
 	void Pop_front();
 	void Push_front(T);
+	void Insert(T, int);
+	void RemoveAt(int);
+	void Pop_back();
 	void Clear();
 	T& operator[](const int index);
 
 private:
+
 	// €чейка списка
 	template<typename T>
 	class Cell
@@ -30,6 +34,6 @@ private:
 		}
 	};
 
-	unsigned int size;
+	int size;
 	Cell<T>* head;
 };
